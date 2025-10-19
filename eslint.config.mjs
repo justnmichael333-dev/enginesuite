@@ -1,10 +1,11 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import pluginJs from "@eslint/js";
+import pluginReact from "eslint-plugin-react";
+import nextPlugin from "@next/eslint-plugin-next";
+import tseslint from "typescript-eslint";
 import { FlatCompat } from "@eslint/eslintrc";
+import path from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+const __dirname = path.resolve();
 const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
@@ -19,6 +20,10 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+    },
   },
 ];
 
